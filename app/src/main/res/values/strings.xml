@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Primera aplicación</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_users">GET USERS</string>
+    <string name="login">LOGIN</string>
+    <string name="Blue">BLUE</string>
+    <string name="Red">RED</string>
+    <string name="bluefragment">BlueFragment</string>
+    <string name="redfragment">RedFragment</string>
 </resources>

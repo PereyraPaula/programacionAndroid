@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDialogFragment
+import com.example.myapplication.fragment.BlueFragment
+import com.example.myapplication.fragment.RedFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,17 +37,43 @@ class MainActivity : AppCompatActivity() {
         startActivity(intento)
     }*/
 
-    private var btnLogin: Button? = null
-    private var btnGetUsers: Button? = null
-    var counter = 0
+    /*private var btnLogin: Button? = null
+    private var btnGetUsers: Button? = null*/
 
-    val userAPIClient = APIBuilder().getRetrofitBuilder(APIUserClient::class.java)
+    private var btn_red: Button? = null
+    private var btn_blue: Button? = null
+
+    //var counter = 0
+    // val userAPIClient = APIBuilder().getRetrofitBuilder(APIUserClient::class.java)
 
     override fun onCreate(savedIntanceState: Bundle?){
         super.onCreate(savedIntanceState)
         setContentView(R.layout.activity_main)
 
-        btnLogin = findViewById<Button>(R.id.button_login)
+        // FRAGMENT EJERCICIO
+        val primerFragment =  BlueFragment()
+        val segundoFragment = RedFragment()
+        btn_red = findViewById<Button>(R.id.button_red)
+        btn_blue = findViewById<Button>(R.id.button_blue)
+
+        btn_blue?.setOnClickListener(View.OnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment,primerFragment)
+                addToBackStack(null)
+                commit()
+            }
+        })
+
+        btn_red?.setOnClickListener(View.OnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment,segundoFragment)
+                addToBackStack(null)
+                commit()
+            }
+        })
+
+
+        /*btnLogin = findViewById<Button>(R.id.button_login)
         btnLogin?.setOnClickListener(View.OnClickListener {
             userLogin()
         })
@@ -51,10 +81,10 @@ class MainActivity : AppCompatActivity() {
         btnGetUsers = findViewById<Button>(R.id.button_getUsers)
         btnGetUsers?.setOnClickListener(View.OnClickListener {
             getUsers()
-        })
+        })*/
     }
 
-    fun userLogin(){
+    /*fun userLogin(){
         counter++
         val call:Call<User> = userAPIClient.login(User("Paula $counter"))
         call.enqueue(object: Callback<User>{
@@ -89,7 +119,10 @@ class MainActivity : AppCompatActivity() {
                 println("Server error. Try again later")
             }
         })
-    }
+    }*/
+
+
+
 
 
 
